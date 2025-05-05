@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/coordinator_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,13 +23,30 @@
 
     <include layout="@layout/content_main" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/fab_margin"
+
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:contentDescription="@string/add_alarm"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!--app:layout_gravity="bottom|centre_horizontal"
+
+    android:layout_marginBottom="@dimen/fab_margin"
+    android:contentDescription="@string/add_alarm"
+    app:srcCompat="@android:drawable/ic_input_add" />
+    app:layout_anchor="@id/nav_host_fragment_content_main"-->
+
+
+
+
+
+    <!--android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        app:srcCompat="@android:drawable/ic_dialog_email"/>
+        -->
