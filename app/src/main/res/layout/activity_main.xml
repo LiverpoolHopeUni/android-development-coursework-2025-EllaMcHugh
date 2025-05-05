@@ -21,7 +21,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/nav_host_fragment_content_main"
+        layout="@layout/content_main" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -34,19 +36,3 @@
         app:srcCompat="@android:drawable/ic_input_add"
         android:contentDescription="@string/add_alarm"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <!--app:layout_gravity="bottom|centre_horizontal"
-
-    android:layout_marginBottom="@dimen/fab_margin"
-    android:contentDescription="@string/add_alarm"
-    app:srcCompat="@android:drawable/ic_input_add" />
-    app:layout_anchor="@id/nav_host_fragment_content_main"-->
-
-
-
-
-
-    <!--android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email"/>
-        -->
