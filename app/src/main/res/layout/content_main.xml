@@ -1,50 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.fragment.app.FragmentContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:padding="12dp"
+    android:id="@+id/nav_host_fragment_content_main"
+    android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <!-- Alarm time display -->
-    <TextView
-        android:id="@+id/tvAlarmTime"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="07:30"
-        android:textSize="18sp"
-        android:textColor="?android:attr/textColorPrimary" />
-
-    <!-- On/off switch -->
-    <Switch
-        android:id="@+id/swEnabled"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true" />
-
-    <!-- Delete button -->
-    <ImageButton
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_delete"
-        android:contentDescription="Delete alarm"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        app:tint="?android:attr/textColorSecondary" />
-
-    <fragment
-        android:id="@+id/nav_host_fragment_content_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_anchorGravity="bottom|center_horizontal"
-        app:navGraph="@navigation/nav_graph" />
-
-</LinearLayout>
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/nav_graph" />

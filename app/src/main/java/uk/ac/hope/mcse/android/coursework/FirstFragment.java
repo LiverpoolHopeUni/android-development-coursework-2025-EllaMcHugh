@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.List;
 public class FirstFragment extends Fragment {
     private AlarmAdapter adapter;
     private AlarmViewModel model;
+    private RecyclerView rvAlarms;
+    private View tvEmpty;
 
     @Nullable
     @Override
@@ -28,8 +31,9 @@ public class FirstFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_first, container, false);
 
-        RecyclerView rv = root.findViewById(R.id.rvAlarms);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvAlarms = root.findViewById(R.id.rvAlarms);
+        tvEmpty = root.findViewById(R.id.tvEmpty);
+        rvAlarms.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         adapter = new AlarmAdapter(new AlarmAdapter.Listener() {
             @Override
@@ -47,13 +51,36 @@ public class FirstFragment extends Fragment {
 
             }
         });
-        rv.setAdapter(adapter);
+        rvAlarms.setAdapter(adapter);
 
         model = new ViewModelProvider(requireActivity()).get(AlarmViewModel.class);
         model.getAlarms().observe(getViewLifecycleOwner(), alarms -> {
-            adapter.submitList(new ArrayList<>(alarms));
+            if (alarms == null || alarms.isEmpty()) {
+                rvAlarms.setVisibility(View.GONE);
+                tvEmpty.setVisibility(View.VISIBLE);
+            } else {
+                rvAlarms.setVisibility(View.VISIBLE);
+                tvEmpty.setVisibility(View.GONE);
+                adapter.submitList(new ArrayList<>(alarms));
+            }
+
+        });
+
+        View button = root.findViewById(R.id.button_first);
+        button.setOnClickListener(v-> {
+            NavHostFragment.findNavController(FirstFragment.this)
+                    .navigate(R.id.action_FirstFragment_to_SecondFragment);
+
         });
         return root;
+    }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view,savedInstanceState);
+
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+        if (fab !=null) {
+            fab.setVisibility(View.VISIBLE);
+        }
     }
 
 }
